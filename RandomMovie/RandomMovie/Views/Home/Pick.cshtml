@@ -1,0 +1,18 @@
+﻿@model RandomMovie.Models.Tmovie
+
+<h1 class="display-4">Pick Movie</h1>
+@using (Html.BeginForm("Pick", "Home", FormMethod.Post))
+{
+<div class="w-25">
+    <div class="form-group">
+        @Html.Label("Pick a Random Movie")
+    </div>
+    <button class="btn btn-success" type="submit">Pick</button>
+    @{
+        if (ViewBag.Movie != null)
+        {
+            <small class="d-block text-success mt-3">@ViewBag.Movie.Title was picked.</small>
+        }
+    }
+</div>
+}

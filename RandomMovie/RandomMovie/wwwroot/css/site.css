@@ -1,0 +1,28 @@
+﻿html, body{
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav {
+    background-color: #f1c40f;
+}
+
+a.navbar-brand {
+    color: #000000;
+    font-weight: bold;
+}
+
+nav .nav-item > a {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+footer {
+    margin-top: auto;
+    padding: 16px 0;
+}

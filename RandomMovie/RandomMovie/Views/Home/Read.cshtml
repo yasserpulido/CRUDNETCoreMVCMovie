@@ -1,0 +1,85 @@
+﻿<h1 class="display-4 mb-3">Read Movie</h1>
+
+<ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" id="picked-tab" data-toggle="tab" href="#picked" role="tab" aria-controls="picked" aria-selected="false">Picked</a>
+    </li>
+</ul>
+
+<div class="w-100 mb-5">
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+            <table id="" class="display table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ foreach (var item in ViewBag.ListMovie)
+                        {
+                            <tr>
+                                <th scope="row">@item.Idmovie</th>
+                                <td>@item.Title</td>
+                                <td>@item.Year</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="picked" role="tabpanel" aria-labelledby="picked-tab">
+            <table id="" class="display table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Picked</th>
+                        <th scope="col">Pick Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ foreach (var item in ViewBag.ListMovie)
+                        {
+                            @if (item.Pick == true)
+                            {
+                                <tr>
+                                    <th scope="row">@item.Idmovie</th>
+                                    <td>@item.Title</td>
+                                    <td>@item.Year</td>
+                                    @if (item.Pick == true)
+                                    {
+                                        <td>@item.Pick</td>
+                                    }
+                                    else
+                                    {
+                                        <td>False</td>
+                                    }
+                                    <td>@item.PickDate</td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('table.display').DataTable();
+        });
+
+    </script>
+
+}

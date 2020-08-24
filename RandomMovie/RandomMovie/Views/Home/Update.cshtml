@@ -1,0 +1,31 @@
+﻿@model RandomMovie.Models.Tmovie
+
+<h1 class="display-4">Update Movie</h1>
+@using (Html.BeginForm("Update", "Home", FormMethod.Post))
+{
+    <div class="w-25">
+        <div class="form-group">
+            @Html.Label("ID")
+            @Html.TextBoxFor(x => x.Idmovie, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Title)
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Year)
+            @Html.TextBoxFor(x => x.Year, new { @class = "form-control" })
+        </div>
+        <button class="btn btn-success" type="submit">Update</button>
+        @{
+            if (!string.IsNullOrEmpty(ViewBag.Error))
+            {
+                <small class="d-block text-danger mt-3">@ViewBag.Error</small>
+            }
+            else if (ViewBag.Movie != null)
+            {
+                <small class="d-block text-success mt-3">@ViewBag.Movie.Title was updated succesfully.</small>
+            }
+        }
+    </div>
+}
